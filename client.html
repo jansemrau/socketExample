@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Client</title>
+    <style>
+    #background{
+        width: 100vh;
+        height: 100vh;
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #image{
+    }
+    </style>
+</head>
+
+<body>
+ <div id="background">
+     <img id="image" src="" alt="Fehlertext">
+ </div>
+<script src="/socket.io/socket.io.js"></script>
+ <script>
+ var socket = io();
+
+    socket.on('change color', function (msg) {
+    var item = document.getElementById('background');
+    item.style.backgroundColor = msg
+    });
+    socket.on('change picture', function (msg) {
+            var item = document.getElementById('image');
+            console.log(msg);
+            item.src = msg
+        });
+    </script>
+</body>
+
+</html>
